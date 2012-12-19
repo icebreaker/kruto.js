@@ -106,6 +106,8 @@ cd demos/paperballoon
 ../../build/kruto.js src/paperballoon.js
 ```
 
+Play it online [here](http://szabster.net/paperballoon).
+
 That's all. Enjoy :)
 
 Available API
