@@ -1,0 +1,50 @@
+diff --git a/core/kernel.rb b/core/kernel.rb
+index 84973ec..1760573 100644
+--- a/core/kernel.rb
++++ b/core/kernel.rb
+@@ -1,4 +1,7 @@
+ module Kernel
++  def require(name)
++  end
++
+   def =~(obj)
+     false
+   end
+@@ -293,4 +296,4 @@ module Kernel
+   def to_s
+     `return "#<" + #{self}._klass._name + ":" + #{self}._id + ">";`
+   end
+-end
+\ No newline at end of file
++end
+diff --git a/lib/opal/parser.rb b/lib/opal/parser.rb
+index 160f636..ae120f8 100644
+--- a/lib/opal/parser.rb
++++ b/lib/opal/parser.rb
+@@ -765,6 +765,8 @@ module Opal
+       recv, meth, arglist, iter = sexp
+       mid = mid_to_jsid meth.to_s
+ 
++      result = ""
++
+       case meth
+       when :attr_reader, :attr_writer, :attr_accessor
+         return handle_attr_optimize(meth, arglist[1..-1])
+@@ -779,7 +781,7 @@ module Opal
+           @requires << path[1]
+         end
+ 
+-        return "//= require #{path[1]}"
++        result += "//= require #{path[1]}\n#{@indent}"
+       when :respond_to?
+         return handle_respond_to(sexp, level)
+       end
+@@ -806,7 +808,7 @@ module Opal
+ 
+       args = process arglist, :expr
+ 
+-      result = if block
++      result += if block
+         dispatch = "(%s = %s, %s%s._p = %s, %s%s" %
+           [tmprecv, recv_code, tmprecv, mid, block, tmprecv, mid]
+ 

@@ -1,0 +1,6 @@
+[submodule "extern/v8"]
+	path = extern/v8
+	url = git://github.com/v8/v8.git
+[submodule "demos/paperballoon"]
+	path = demos/paperballoon
+	url = git://github.com/icebreaker/paperballoon.git

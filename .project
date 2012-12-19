@@ -1,0 +1,10 @@
+build:
+	make
+
+clean:
+	make clean
+
+execute:
+	cd demos/basic; ../../build/kruto.js
+
+.PHONY: build clean execute
