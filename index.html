@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Kruto.js by icebreaker</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/icebreaker/kruto.js">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/icebreaker/kruto.js/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/icebreaker/kruto.js/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Kruto.js</h1>
+          <p>HTML5 Sandbox</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/icebreaker">icebreaker</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>Kruto.js</h1>
+
+<p>Kruto.js is an HTML5 <em>sandbox</em> inspired by <a href="https://github.com/phoboslab/Ejecta">Ejecta</a>.</p>
+
+<blockquote>
+<p>Transform your HTML5 games/apps into first class citizens of the desktop.</p>
+</blockquote>
+
+<p>Please <em>note</em> that only a small subset of features is implemented.</p>
+
+<p>You should consider it <em>alpha quality</em>; take everything with a grain of salt and 
+pepper for that matter.</p>
+
+<blockquote>
+<p>No shaders were harmed in the making of Kruto.js.</p>
+</blockquote>
+
+<h2>Getting Started</h2>
+
+<p>In order to get started you need to clone this repository and fetch the
+bundled submodules by opening up a Terminal window and issuing the following
+commands.</p>
+
+<div class="highlight"><pre>git clone git://github.com/icebreaker/kruto.js.git
+<span class="nb">cd </span>kruto.js
+git submodule init
+git submodule update
+</pre></div>
+
+<p>Before you start make sure that you installed all the required dependencies.</p>
+
+<p><strong>Note</strong>: Windows and Mac OSX users you are on your for now, but everything
+<strong>should</strong> work just fine without <em>any</em> changes.</p>
+
+<h4>Requirements</h4>
+
+<ul>
+<li><a href="http://industriousone.com/premake">premake4</a></li>
+<li><a href="http://www.libsdl.org/">SDL 1.2</a></li>
+<li><a href="http://www.libsdl.org/projects/SDL_image/">SDL Image 1.2</a></li>
+<li><a href="http://www.libsdl.org/projects/SDL_mixer/">SDL Mixer 1.2</a></li>
+<li><a href="https://developers.google.com/v8/">V8</a></li>
+</ul><h5>Premake</h5>
+
+<p>Download premake from <a href="http://industriousone.com/premake/download">industriousone.com</a> 
+and copy it to a location in your <code>PATH</code>.</p>
+
+<div class="highlight"><pre>sudo cp premake4 /usr/bin
+</pre></div>
+
+<h5>SDL</h5>
+
+<p>You can install SDL from <em>source</em> or via your GNU/Linux distribution's favorite
+package manager. Odds are you already have it installed.</p>
+
+<p>Fedora</p>
+
+<div class="highlight"><pre>sudo yum install SDL-devel SDL_image-devel SDL_mixer-devel SDL_ttf-devel
+</pre></div>
+
+<p>Debian</p>
+
+<div class="highlight"><pre>sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev
+</pre></div>
+
+<p>openSUSE</p>
+
+<div class="highlight"><pre>sudo zypper install libSDL-devel libSDL_image-devel libSDL_mixer-devel
+</pre></div>
+
+<h5>V8</h5>
+
+<p>V8 is bundled as a <code>git submodule</code> and you can compile it by issuing the
+following commands in the <code>kruto.js</code> directory.</p>
+
+<div class="highlight"><pre><span class="nb">cd </span>extern/v8
+make dependencies
+make native
+</pre></div>
+
+<h4>Build</h4>
+
+<p>Now that you have all the dependencies run the following commands in the
+<code>kruto.js</code> directory.</p>
+
+<div class="highlight"><pre>premake4 gmake
+make <span class="nv">config</span><span class="o">=</span>release
+</pre></div>
+
+<p>If all goes well and the birds sing in your yard there should be an executable called 
+<code>kruto.js</code> in the <code>build</code> directory.</p>
+
+<h2>Basic Example</h2>
+
+<p><img src="https://raw.github.com/icebreaker/kruto.js/master/screenshots/basic.png" alt=""></p>
+
+<div class="highlight"><pre><span class="nb">cd </span>demos/basic
+../../build/kruto.js
+</pre></div>
+
+<h2>Advanced Example</h2>
+
+<p><img src="https://raw.github.com/icebreaker/kruto.js/master/screenshots/paperballoon.png" alt=""></p>
+
+<div class="highlight"><pre><span class="nb">cd </span>demos/paperballoon
+../../build/kruto.js src/paperballoon.js
+</pre></div>
+
+<p>That's all. Enjoy :)</p>
+
+<h2>Available API</h2>
+
+<p>Kruto.js implements <strong>only</strong> a small subset of HTML5 meaning that there's
+<strong>no real DOM, CSS, WebGL or other exotic stuff.</strong>.</p>
+
+<h4>console</h4>
+
+<ul>
+<li>log(message, ...)</li>
+</ul><h4>Canvas</h4>
+
+<ul>
+<li>save()</li>
+<li>restore()</li>
+<li>scale(x, y)</li>
+<li>rotate(angle)</li>
+<li>translate(x, y)</li>
+<li>transform(m11, m12, m21, m22, dx, dy)</li>
+<li>setTransform(m11, m12, m21, m22, dx, dy)</li>
+<li>width (property)</li>
+<li>height (property)</li>
+<li>drawImage(image, dx, dy)</li>
+<li>drawImage(image, dx, dy, dw, dh)</li>
+<li>drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)</li>
+<li>clearRect(x, y, w, h)</li>
+<li>fillRect(x, y, w, h)</li>
+<li>strokeRect(x, y, w, h)</li>
+<li>beginPath()</li>
+<li>closePath()</li>
+<li>moveTo(x, y)</li>
+<li>lineTo(x, y)</li>
+<li>fill()</li>
+<li>stroke()</li>
+<li>strokeStyle (property)</li>
+<li>fillStyle (property)</li>
+<li>lineWidth (property)</li>
+<li>requestFullscreen()</li>
+<li>isFullscreen()</li>
+</ul><h4>Image</h4>
+
+<ul>
+<li>src (property)</li>
+<li>width (read-only property)</li>
+<li>height (read-only property)</li>
+<li>load (event)</li>
+<li>error (event)</li>
+</ul><div class="highlight"><pre><span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+<span class="nx">image</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> 
+<span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="nx">image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'panda.png'</span><span class="p">;</span>
+</pre></div>
+
+<h4>Audio</h4>
+
+<ul>
+<li>play()</li>
+<li>pause()</li>
+<li>canPlayType(type) (supports <code>audio/wav</code> and <code>audio/ogg</code>)</li>
+<li>volume (property) (supports <code>0.0f</code> to <code>1.0f</code>)</li>
+<li>error(event)</li>
+<li>canplaythrough(event)</li>
+<li>loop (property)</li>
+<li>src (property)</li>
+</ul><div class="highlight"><pre><span class="kd">var</span> <span class="nx">audio</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Audio</span><span class="p">();</span>
+<span class="nx">audio</span><span class="p">.</span><span class="nx">canplaythrough</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="nx">audio</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="nx">audio</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'panda.ogg'</span><span class="p">;</span>
+</pre></div>
+
+<h4>document</h4>
+
+<ul>
+<li>title (property)</li>
+<li>createElement(tagName)</li>
+<li>getElementById(id)</li>
+<li>keydown (event)</li>
+<li>keyup (event)</li>
+<li>mousedown (event)</li>
+<li>mouseup (event)</li>
+<li>mousemove (event)</li>
+</ul><h4>navigator</h4>
+
+<ul>
+<li>userAgent (read-only property) returns <code>Kruto.js/1.0.1337 Chrome/24.0.1305.3</code>
+</li>
+<li>appVersion (read-only property) returns <code>Kruto.js/1.0.1337 Chrome/24.0.1305.3</code>
+</li>
+</ul><h4>window</h4>
+
+<ul>
+<li>innerWidth (read-only property)</li>
+<li>innerHeight (read-only property)</li>
+<li>setTimeout(callback, timeout)</li>
+<li>clearTimeout(timeoutId)</li>
+<li>setInterval(callback, interval)</li>
+<li>clearInterval(intervalId)</li>
+<li>requestAnimationFrame(callback)</li>
+<li>exitFullscreen()</li>
+</ul><h4>location</h4>
+
+<ul>
+<li>href (read-only property) returns <code>http://kruto.js/?carg1=carg2&amp;carg3=carg4</code>
+</li>
+</ul><h4>this</h4>
+
+<ul>
+<li>require(file)</li>
+</ul><div class="highlight"><pre><span class="c1">// loads a script file synchronously (blocking)</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'js/game.js'</span><span class="p">)</span>
+</pre></div>
+
+<h2>Extending the API</h2>
+
+<p>There are two possible ways to extend <code>kruto.js</code> as outlined below.</p>
+
+<h4>Native Code - C++</h4>
+
+<p>New <em>features</em> can be added by implementing and compiling them into the
+<code>kruto.js</code> binary. More often than not this will also require adding some
+<em>glue</em> or <em>syntactic sugar</em> into the <code>Standard Library</code>.</p>
+
+<p>For instance TTF font support could be added by using the <code>SDL_ttf</code> library in
+a similar fashion to the existing <code>Image</code> and <code>Audio</code> support.</p>
+
+<p>All native <em>methods</em> must be exposed as part of the <em>kruto</em> namespace/object.</p>
+
+<h4>Standard Library Code - JS</h4>
+
+<p>However, some features are <code>easier</code> to emulate from JS and that's where the
+<em>Standard Library</em> comes into play.</p>
+
+<p>The Standard Library resides in <code>src/kruto/sandbox/stdlib.js</code>, it is
+compiled into the <code>kruto.js</code> executable and used to bootstrap the environment
+before loading <code>main.js</code>.</p>
+
+<p><code>kruto.js</code> has to be recompiled in order to pick up the changes by running 
+the following commands.</p>
+
+<div class="highlight"><pre>premake4 stdlib
+make
+</pre></div>
+
+<p>If there's a local copy of <code>stdlib.js</code> in the same directory with <code>main.js</code> it
+will take precedence and will be loaded instead of the embedded one.</p>
+
+<p>This behavior can be used while testing without recompiling <code>kruto.js</code> after
+each change to <code>stdlib.js</code>.</p>
+
+<p>Feel free to take a sneak peek into <code>src/kruto/sandbox/stdlib.js</code> in order to
+make an idea about what is available at this point.</p>
+
+<h2>Notes</h2>
+
+<p>There are a couple of important things to consider when building with <code>kruto.js</code> 
+in mind.</p>
+
+<ul>
+<li>You <strong>must</strong> set the <code>width</code> and <code>height</code> of the canvas before calling <code>getContext</code>
+</li>
+</ul><div class="highlight"><pre><span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"canvas"</span><span class="p">);</span>
+
+<span class="c1">// setting `width` and `height` before</span>
+<span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="mi">1280</span><span class="p">;</span>
+<span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="mi">720</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">"2d"</span><span class="p">);</span>
+</pre></div>
+
+<ul>
+<li>You <strong>can</strong> set <code>style.backgroundColor</code> to change the <code>clear color</code> (background) of 
+the canvas</li>
+</ul><div class="highlight"><pre><span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"canvas"</span><span class="p">);</span>
+<span class="nx">canvas</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s2">"#CACACA"</span><span class="p">;</span>
+</pre></div>
+
+<h4>Command Line</h4>
+
+<div class="highlight"><pre>kruto.js <span class="o">[</span>main.js<span class="o">]</span> <span class="o">[</span>--key<span class="o">=</span>value --key<span class="o">=</span>value<span class="o">]</span>
+</pre></div>
+
+<p>By default <code>kruto.js</code> will look in the current directory for the <code>main.js</code>
+file, if not found it will terminate immediately.</p>
+
+<p>It is possible to specify an alternate file to be executed by providing its
+name as the first argument when running <code>kruto.js</code>. </p>
+
+<p>Please <strong>note</strong> that this file must be <em>relative</em> to the current directory.</p>
+
+<h2>Contribute</h2>
+
+<ul>
+<li>Fork the project.</li>
+<li>Make your feature addition or bug fix.</li>
+<li>Do <strong>not</strong> bump the version number.</li>
+<li>Send me a pull request. Bonus points for topic branches.</li>
+</ul><h2>License</h2>
+
+<p>Copyright (c) 2012, Mihail Szabolcs</p>
+
+<p>Kruto.js is provided <strong>as-is</strong> under the <strong>MIT</strong> license. For more information see
+LICENSE.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-3042007-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
