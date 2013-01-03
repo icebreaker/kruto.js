@@ -31,21 +31,8 @@ bool Canvas::setVideoMode(const unsigned int pWidth, const unsigned int pHeight,
 		flags |= SDL_FULLSCREEN;
 
 #ifdef KR_CENTER_WINDOW
-	#if __GNUC__ >= 4
-		#if __GNUC_MINOR__ >= 6
-			#pragma GCC diagnostic push
-		#endif
-		#pragma GCC diagnostic ignored "-Wwrite-strings"
-	#endif
-	SDL_putenv("SDL_VIDEO_WINDOW_POS");
-	SDL_putenv("SDL_VIDEO_CENTERED=1");
-	#if __GNUC__ >= 4
-		#if __GNUC_MINOR__ >= 6
-			#pragma GCC diagnostic pop
-		#else
-			#pragma GCC diagnostic warning "-Wwrite-strings"
-		#endif
-	#endif
+	SDL_putenv(const_cast<char *>("SDL_VIDEO_WINDOW_POS"));
+	SDL_putenv(const_cast<char *>("SDL_VIDEO_CENTERED=1"));
 #endif
 
 #if defined(KR_MSAA) && KR_MSAA > 0
