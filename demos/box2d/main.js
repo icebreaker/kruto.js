@@ -50,17 +50,17 @@ function init() {
    //create some objects
    bodyDef.type = b2Body.b2_dynamicBody;
    for(var i = 0; i < 10; ++i) {
-  //    if(Math.random() > 0.5) {
+      if(Math.random() > 0.5) {
          fixDef.shape = new b2PolygonShape;
          fixDef.shape.SetAsBox(
                Math.random() + 0.1 //half width
             ,  Math.random() + 0.1 //half height
          );
-//      } else {
-//         fixDef.shape = new b2CircleShape(
-//            Math.random() + 0.1 //radius
-//         );
-//      }
+      } else {
+         fixDef.shape = new b2CircleShape(
+            Math.random() + 0.1 //radius
+         );
+      }
       bodyDef.position.x = Math.random() * 10;
       bodyDef.position.y = Math.random() * 10;
       world.CreateBody(bodyDef).CreateFixture(fixDef);

@@ -15,3 +15,13 @@ ctx.lineTo(100,175);
 ctx.lineTo(100,25);
 ctx.fill();
 ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(300, 300, 50, 0, Math.PI * 2);
+ctx.fill();
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(400, 400, 50, Math.PI, Math.PI * 2);
+ctx.fill();
+ctx.stroke();

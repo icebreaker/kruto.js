@@ -274,9 +274,11 @@ window = this;
     {
       // empty
     },
-    arc: function()
+    arc: function(x, y, radius, startAngle, endAngle, anticlockwise)
     {
-      // TODO
+      // FIXME: joke?
+      for(var i=startAngle; i<endAngle; i+=0.01)
+        this._path.push([x + Math.cos(i) * radius, y + Math.sin(i) * radius]);
     },
     moveTo: function()
     {
